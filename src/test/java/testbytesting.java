@@ -13,13 +13,14 @@ public class testbytesting {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        //driver.get("https://rozetka.com.ua/");
-
-        //Google Search
-        driver.get("https://www.google.com/");
+        driver.get("https://rozetka.com.ua/");
         String searchFieldXpath = "//input[@title='Поиск']";
         WebElement FieldSearch = driver.findElement(By.xpath(searchFieldXpath));
-        FieldSearch.sendKeys("rozetka", Keys.ENTER);
+        //Google Search
+        driver.get("https://www.google.com/");
+        String searchFieldXpath1 = "//input[@title='Поиск']";
+        WebElement FieldSearch2 = driver.findElement(By.xpath(searchFieldXpath1));
+        FieldSearch2.sendKeys("rozetka", Keys.ENTER);
         // клик на первую ссылку в результатах поиска
         String searchrozetka = "//input[@title='Интернет-магазин ROZETKA™: официальный сайт самого ...']";
         WebElement firstLink = driver.findElement(By.xpath(searchrozetka));
