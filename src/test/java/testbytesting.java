@@ -39,7 +39,7 @@ public class testbytesting {
 
 
         // закрытие браузера
-        //driver.quit();
+        driver.quit();
 
     }
 }
