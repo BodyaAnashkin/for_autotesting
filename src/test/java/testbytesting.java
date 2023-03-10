@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class testbytesting {
 
@@ -15,7 +16,7 @@ public class testbytesting {
 
         //Google Search
         driver.get("https://www.google.com/");
-        String searchFieldXpath1 = "//input[@title='Поиск']";
+        String searchFieldXpath1 = "//input[@class='gLFyf']";
         WebElement FieldSearch2 = driver.findElement(By.xpath(searchFieldXpath1));
         FieldSearch2.sendKeys("rozetka", Keys.ENTER);
         // клик на первую ссылку в результатах поиска
@@ -23,23 +24,26 @@ public class testbytesting {
         WebElement firstLink = driver.findElement(By.xpath(searchrozetka));
         firstLink.click();
 
-
-
+        //Поиск на сайте Розетки
         String searchFieldXpath = "//input[@name='search']";
         WebElement FieldSearch = driver.findElement(By.xpath(searchFieldXpath));
         FieldSearch.sendKeys("шампунь",Keys.ENTER);
 
+        //Выбор шампуня
         String searchLinkShampu = ".//span[@class='goods-tile__title' and text()=' Шампунь против перхоти Head & Shoulders Основной уход 900 мл (8006540114971)  ']/..";
         WebElement LinkSpampu = driver.findElement(By.xpath(searchLinkShampu));
         LinkSpampu.click();
 
-        String buttonBuy = "//button[@type='button' and text()='Купить']";
-        WebElement buttonBuyShampu = driver.findElement(By.xpath(buttonBuy));
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        WebElement buttonBuyShampu = driver.findElement(By.className("button--green"));
         buttonBuyShampu.click();
 
+        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        WebElement buttonCheckOpen = driver.findElement(By.className("cart-receipt__submit"));
+        buttonCheckOpen.click();
 
         // закрытие браузера
-        driver.quit();
+        //driver.quit();
 
     }
 }
