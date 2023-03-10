@@ -13,21 +13,33 @@ public class testbytesting {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        driver.get("https://rozetka.com.ua/");
-        String searchFieldXpath = "//input[@title='Поиск']";
-        WebElement FieldSearch = driver.findElement(By.xpath(searchFieldXpath));
         //Google Search
         driver.get("https://www.google.com/");
         String searchFieldXpath1 = "//input[@title='Поиск']";
         WebElement FieldSearch2 = driver.findElement(By.xpath(searchFieldXpath1));
         FieldSearch2.sendKeys("rozetka", Keys.ENTER);
         // клик на первую ссылку в результатах поиска
-        String searchrozetka = "//input[@title='Интернет-магазин ROZETKA™: официальный сайт самого ...']";
+        String searchrozetka = ".//h3[@class='LC20lb MBeuO DKV0Md']/..";
         WebElement firstLink = driver.findElement(By.xpath(searchrozetka));
         firstLink.click();
 
+
+
+        String searchFieldXpath = "//input[@name='search']";
+        WebElement FieldSearch = driver.findElement(By.xpath(searchFieldXpath));
+        FieldSearch.sendKeys("шампунь",Keys.ENTER);
+
+        String searchLinkShampu = ".//span[@class='goods-tile__title' and text()=' Шампунь против перхоти Head & Shoulders Основной уход 900 мл (8006540114971)  ']/..";
+        WebElement LinkSpampu = driver.findElement(By.xpath(searchLinkShampu));
+        LinkSpampu.click();
+
+        String buttonBuy = "//button[@type='button' and text()='Купить']";
+        WebElement buttonBuyShampu = driver.findElement(By.xpath(buttonBuy));
+        buttonBuyShampu.click();
+
+
         // закрытие браузера
-        driver.quit();
+        //driver.quit();
 
     }
 }
